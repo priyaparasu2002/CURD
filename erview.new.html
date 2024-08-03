@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="ISO-8859-1">
+<title>Exam Result | new record | SYSTech </title>
+</head>
+<script>
+function computeData(){
+	var m1=tbxm1.value;
+	var m2=tbxm2.value;
+	
+	m1=parseFloat(m1);
+	m1=isNaN(m1)? 0: m1;
+	m2=parseFloat(m2);
+	m2=isNaN(m2)? 0: m2;
+	
+	var total=m1+m2;
+	var avg=total/2;
+	var result=m1>34.4 && m2>34.4?"Pass":"Fail";
+	var grade="-";
+	
+	if(result=="Pass"){
+		if(avg >95){
+			grade="O";
+		}else if(avg>85){
+			grade="A+";
+		}
+		else if(avg>75){
+			grade="A";
+		}
+		else if(avg>65){
+			grade="B";
+		}
+		else if(avg>59){
+			grade="C";
+		}
+	}
+
+	tbxtotal.value=total;
+	tbxavg.value=avg;
+	tbxresult.value=result;
+	tbxgrade.value=grade;	
+	}
+</script>
+
+<form action="erview.new.jsp" method="post">
+<table>
+
+<tr>
+<td>Student name
+<td><input type="text" name="tbxsname" id="tbxsname" placeholder="Unknown"/>
+
+<tr>
+<td>Mark-1
+<td><input type="text" name="tbxm1" id="tbxm1" placeholder="0.00" oninput="computeData();"/>
+
+<tr>
+<td>Mark-2
+<td><input type="text" name="tbxm2" id="tbxm2" placeholder="0.00" oninput="computeData();"/>
+
+<tr>
+<td>Total
+<td><input type="text" name="tbxtotal" id="tbxtotal" placeholder="0.00" readonly="readonly"/>
+
+<tr>
+<td>Average
+<td><input type="text" name="tbxavg" id="tbxavg" placeholder="0.00" readonly="readonly"/>
+
+<tr>
+<td>Result
+<td><input type="text" name="tbxresult" id="tbxresult" placeholder="0.00" readonly="readonly"/>
+
+<tr>
+<td>Grade
+<td><input type="text" name="tbxgrade" id="tbxgrade"  placeholder="-" readonly="readonly"/>
+
+<tr>
+<td colspan="2" align="center">
+<input type="button" value="Cancel" onclick="location.href='erview.new.html';"/>
+<input type="submit" value="Save"/>
+<input type="button" value="Home" onclick="location.href='erview.select.jsp';"/>
+</table>
+</form>
+</html>
